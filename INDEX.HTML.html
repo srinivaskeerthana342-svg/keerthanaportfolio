@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keerthana S - Electrical Engineer Portfolio</title>
+  <style>
+    /* RESET & BASE STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --accent-color: #3b82f6;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --bg-light: #f9fafb;
+      --bg-white: #ffffff;
+      --border-color: #e5e7eb;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* NAVIGATION */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    #scroll-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+    }
+
+    .hero-name {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .hero-tagline {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary-color);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary-color);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-arrow {
+      width: 24px;
+      height: 24px;
+      border-left: 2px solid white;
+      border-bottom: 2px solid white;
+      transform: rotate(-45deg);
+      margin: 0.5rem auto;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--primary-color);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--primary-color);
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+
+    /* ABOUT SECTION */
+    .about-section {
+      background: white;
+    }
+
+    .about-text {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: center;
+      color: var(--text-dark);
+    }
+
+    /* SKILLS SECTION */
+    .skills-section {
+      background: var(--bg-light);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .skill-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-list li {
+      padding: 0.5rem 0;
+      color: var(--text-dark);
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .skill-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success-color);
+      font-weight: bold;
+    }
+
+    /* EXPERIENCE SECTION */
+    .experience-section {
+      background: white;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: var(--border-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: calc(50% + 2rem);
+    }
+
+    .timeline-item:nth-child(even) {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(50% + 2rem);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 0 0 4px var(--primary-color);
+      z-index: 10;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+    }
+
+    .timeline-date {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content h3 {
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content h4 {
+      color: var(--text-light);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .experience-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .experience-list li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .experience-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+    }
+
+    /* PROJECTS SECTION */
+    .projects-section {
+      background: var(--bg-light);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .project-card p {
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .project-details {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+
+    .project-details li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .project-details li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background: var(--bg-light);
+      color: var(--primary-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      border: 1px solid var(--primary-color);
+    }
+
+    /* EDUCATION SECTION */
+    .education-section {
+      background: white;
+    }
+
+    .education-content {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .education-card {
+      background: var(--bg-light);
+      padding: 2rem;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .education-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .education-card h4 {
+      color: var(--text-dark);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-year {
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .education-grade {
+      color: var(--success-color);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .education-highlights {
+      list-style: none;
+      padding: 0;
+    }
+
+    .education-highlights li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .education-highlights li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success-color);
+    }
+
+    /* CERTIFICATIONS SECTION */
+    .certifications-section {
+      background: var(--bg-light);
+    }
+
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .cert-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .cert-logo {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .cert-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .cert-card p {
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-desc {
+      color: var(--text-dark);
+      font-size: 0.9rem;
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      background: white;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--bg-light);
+      border-radius: 10px;
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+
+    .contact-item h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-item p {
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .contact-item a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0.5rem 0;
+      opacity: 0.8;
+    }
+
+    /* CHAT BOT */
+    #chat-wrapper {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .chat-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .chat-btn:hover {
+      transform: scale(1.1);
+      background: var(--secondary-color);
+    }
+
+    #chat-container {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 350px;
+      height: 500px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s;
+    }
+
+    .chat-hidden {
+      display: none !important;
+    }
+
+    .chat-header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      border-radius: 15px 15px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    #close-chat {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background: var(--bg-light);
+    }
+
+    .message {
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      border-radius: 10px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .bot-msg {
+      background: white;
+      color: var(--text-dark);
+      border: 1px solid var(--border-color);
+    }
+
+    .user-msg {
+      background: var(--primary-color);
+      color: white;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .chat-input-area {
+      display: flex;
+      padding: 1rem;
+      border-top: 1px solid var(--border-color);
+      background: white;
+      border-radius: 0 0 15px 15px;
+    }
+
+    #chat-input {
+      flex: 1;
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    #chat-send {
+      margin-left: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    #chat-send:hover {
+      background: var(--secondary-color);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: none;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .hero-name {
+        font-size: 2.5rem;
+      }
+
+      .hero-title {
+        font-size: 1.2rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .timeline::before {
+        left: 0;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        padding-left: 2rem;
+        padding-right: 0;
+        justify-content: flex-start;
+      }
+
+      .timeline-dot {
+        left: 0;
+        transform: translateX(-50%);
+      }
+
+      #chat-container {
+        width: calc(100vw - 40px);
+        right: 20px;
+      }
+
+      .skills-grid,
+      .projects-grid,
+      .certifications-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Keerthana S</div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#internships" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION WITH CANVAS ANIMATION -->
+  <section id="hero" class="hero-section">
+    <canvas id="scroll-canvas"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-name">Keerthana S</h1>
+      <h2 class="hero-title">Electrical Engineer | Data Science | IoT | MATLAB</h2>
+      <p class="hero-tagline">Building innovative solutions with expertise in circuit analysis, data science, and embedded systems.</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll Down</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <p class="about-text">
+          I am a B.E. Electrical and Electronics Engineering student at TPGIT with a strong foundation in circuits analysis, electrical machines, and MATLAB. I possess hands-on knowledge of Python, IoT, and the basics of Excel and SQL. With a CGPA of 8.13, I have actively participated in hackathons and gained practical experience through internships in industrial electrical systems and data science.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <h2 class="section-title">Professional Skills</h2>
+      <div class="skills-grid">
+        
+        <div class="skill-card">
+          <div class="skill-icon">💻</div>
+          <h3>Programming</h3>
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>MATLAB</li>
+            <li>SQL (Basics)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🔌</div>
+          <h3>Simulation Software</h3>
+          <ul class="skill-list">
+            <li>MATLAB</li>
+            <li>Wokwi</li>
+            <li>Tinkercad</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <h3>IoT & Embedded</h3>
+          <ul class="skill-list">
+            <li>IoT Systems</li>
+            <li>Embedded Systems</li>
+            <li>Sensor Integration</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">📊</div>
+          <h3>Data Science</h3>
+          <ul class="skill-list">
+            <li>NumPy</li>
+            <li>Pandas</li>
+            <li>Matplotlib</li>
+            <li>Data Preprocessing</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">⚙️</div>
+          <h3>Core Engineering</h3>
+          <ul class="skill-list">
+            <li>Circuit Analysis</li>
+            <li>Electrical Machines</li>
+            <li>Power Systems</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🤝</div>
+          <h3>Professional Skills</h3>
+          <ul class="skill-list">
+            <li>Time Management</li>
+            <li>Presentation Skills</li>
+            <li>Team Collaboration</li>
+            <li>Leadership</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="internships" class="section experience-section">
+    <div class="container">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2024</div>
+            <h3>Intern</h3>
+            <h4>Titan Limited – Watch Division Company, Hosur</h4>
+            <ul class="experience-list">
+              <li>Gained practical exposure to industrial electrical systems</li>
+              <li>Understood maintenance operations in manufacturing environment</li>
+              <li>Worked with industrial-grade electrical equipment</li>
+              <li>Applied theoretical concepts to real-world industrial scenarios</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2024</div>
+            <h3>Data Science Intern</h3>
+            <h4>Cognifzy Technology</h4>
+            <ul class="experience-list">
+              <li>Worked on data preprocessing, data cleaning, and analysis</li>
+              <li>Utilized Python libraries: NumPy, Pandas, and Matplotlib</li>
+              <li>Developed data visualization and analytical solutions</li>
+              <li>Gained hands-on experience in real-world data science applications</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <h2 class="section-title">Projects & Achievements</h2>
+      <div class="projects-grid">
+        
+        <div class="project-card">
+          <div class="project-icon">🏆</div>
+          <h3>Machine Health Monitoring System</h3>
+          <p><strong>👩‍💻 Women's Hackathon Participant</strong></p>
+          <p>Advanced monitoring system for electrical machines with real-time fault detection capabilities.</p>
+          <ul class="project-details">
+            <li>Developed comprehensive machine health monitoring solution</li>
+            <li>Implemented real-time data collection and analysis</li>
+            <li>Participated in competitive national-level hackathon</li>
+            <li>Applied IoT and embedded systems knowledge</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tag">IoT</span>
+            <span class="tag">Embedded Systems</span>
+            <span class="tag">Monitoring</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section id="education" class="section education-section">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="education-content">
+        
+        <div class="education-card">
+          <h3>Bachelor of Electrical and Electronics Engineering</h3>
+          <h4>Thanthai Periyar Government Institute of Technology, Vellore</h4>
+          <p class="education-year">2022 – 2026 (Expected)</p>
+          <p class="education-grade">CGPA: 8.13 (up to 6th semester)</p>
+          <ul class="education-highlights">
+            <li>Strong academic performance with consistent growth</li>
+            <li>Active participation in hackathons and technical events</li>
+            <li>Hands-on experience through internships and projects</li>
+            <li>Member of technical project teams</li>
+            <li>Enhanced practical skills through collaborative learning</li>
+          </ul>
+        </div>
+
+        <div class="education-card">
+          <h3>Higher Secondary Education</h3>
+          <h4>Holy Cross Matrix Higher Secondary School</h4>
+          <p class="education-year">2018 – 2022</p>
+          <ul class="education-highlights">
+            <li>12th Grade: 85.83%</li>
+            <li>10th Grade: 75%</li>
+            <li>Strong foundation in mathematics and science</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS SECTION -->
+  <section id="achievements" class="section certifications-section">
+    <div class="container">
+      <h2 class="section-title">Certifications & Recognition</h2>
+      <div class="certifications-grid">
+        
+        <div class="cert-card">
+          <div class="cert-logo">🤖</div>
+          <h3>Machine Learning – Onramp</h3>
+          <p>MathWorks</p>
+          <p class="cert-desc">Completed foundational ML course</p>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-logo">📐</div>
+          <h3>MATLAB – Onramp</h3>
+          <p>MathWorks</p>
+          <p class="cert-desc">Mastered MATLAB fundamentals</p>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-logo">👩‍💻</div>
+          <h3>Women's Hackathon</h3>
+          <p>Participant</p>
+          <p class="cert-desc">Machine Health Monitoring System</p>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-logo">🎓</div>
+          <h3>Academic Excellence</h3>
+          <p>CGPA: 8.13</p>
+          <p class="cert-desc">Consistent high performance</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES SECTION -->
+  <section id="languages" class="section skills-section">
+    <div class="container">
+      <h2 class="section-title">Languages</h2>
+      <div class="skills-grid">
+        
+        <div class="skill-card">
+          <div class="skill-icon">🗣️</div>
+          <h3>Fluent</h3>
+          <ul class="skill-list">
+            <li>English</li>
+            <li>Tamil</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">💬</div>
+          <h3>Speaking Proficiency</h3>
+          <ul class="skill-list">
+            <li>Telugu</li>
+            <li>Kannada</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-content">
+        
+        <div class="contact-info">
+          
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <h3>Phone</h3>
+              <p>+91 8870694303</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <h3>Email</h3>
+              <p><a href="mailto:srinivaskeerthana342@gmail.com">srinivaskeerthana342@gmail.com</a></p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h3>Location</h3>
+              <p>Kootur village, Karupali post<br>Denkanikottai taluk<br>Krishnagiri district – 635113<br>Tamil Nadu, India</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>Built with passion for electrical engineering and innovation</p>
+      <p>&copy; 2025 Keerthana S. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- CHAT BOT -->
+  <div id="chat-wrapper">
+    <button id="chat-toggle" class="chat-btn">
+        <span class="icon">💬</span>
+    </button>
+
+    <div id="chat-container" class="chat-hidden">
+        <div class="chat-header">
+            <h3>Keerthana's Portfolio Assistant</h3>
+            <button id="close-chat">&times;</button>
+        </div>
+        <div id="chat-messages">
+            <div class="message bot-msg">Hi! Ask me anything about Keerthana's projects, skills, or experience!</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off">
+            <button id="chat-send">Send</button>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    // MOBILE MENU TOGGLE
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // CANVAS ANIMATION
+    const canvas = document.getElementById('scroll-canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 100;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width || this.x < 0) {
+          this.speedX *= -1;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+          this.speedY *= -1;
+        }
+      }
+
+      draw() {
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+
+      // Draw connections
+      particles.forEach((a, i) => {
+        particles.slice(i + 1).forEach(b => {
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 100) {
+            ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 100})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        });
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // CHATBOT FUNCTIONALITY
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatContainer = document.getElementById('chat-container');
+    const closeChat = document.getElementById('close-chat');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatMessages = document.getElementById('chat-messages');
+
+    // Toggle chat window
+    chatToggle.addEventListener('click', () => {
+      chatContainer.classList.toggle('chat-hidden');
+    });
+
+    closeChat.addEventListener('click', () => {
+      chatContainer.classList.add('chat-hidden');
+    });
+
+    // Chatbot responses
+    const responses = {
+      'skills': "Keerthana has expertise in Python, MATLAB, IoT, Data Science (NumPy, Pandas, Matplotlib), Circuit Analysis, and Electrical Machines. She also has experience with simulation tools like Wokwi and Tinkercad.",
+      'education': "Keerthana is pursuing B.E. in Electrical and Electronics Engineering from TPGIT, Vellore (2022-2026) with a CGPA of 8.13. She completed her 12th grade with 85.83% and 10th grade with 75%.",
+      'experience': "Keerthana has interned at Titan Limited (Industrial Electrical Systems) and Cognifzy Technology (Data Science), gaining hands-on experience in industrial maintenance and data analysis.",
+      'projects': "Her notable project is the Machine Health Monitoring System, developed during the Women's Hackathon, featuring real-time fault detection using IoT and embedded systems.",
+      'contact': "You can reach Keerthana at:\n📞 +91 8870694303\n📧 srinivaskeerthana342@gmail.com\n📍 Krishnagiri district, Tamil Nadu",
+      'certifications': "Keerthana has completed Machine Learning Onramp and MATLAB Onramp certifications from MathWorks.",
+      'default': "I can help you learn about Keerthana's skills, education, experience, projects, certifications, or contact information. What would you like to know?"
+    };
+
+    function addMessage(text, isUser = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${isUser ? 'user-msg' : 'bot-msg'}`;
+      messageDiv.textContent = text;
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function getBotResponse(userMessage) {
+      const lowerMessage = userMessage.toLowerCase();
+      
+      if (lowerMessage.includes('skill')) return responses.skills;
+      if (lowerMessage.includes('education') || lowerMessage.includes('study') || lowerMessage.includes('degree')) return responses.education;
+      if (lowerMessage.includes('experience') || lowerMessage.includes('intern') || lowerMessage.includes('work')) return responses.experience;
+      if (lowerMessage.includes('project')) return responses.projects;
+      if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('phone')) return responses.contact;
+      if (lowerMessage.includes('certificate') || lowerMessage.includes('certification')) return responses.certifications;
+      if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) return "Hello! I'm here to help you learn about Keerthana's background and skills. What would you like to know?";
+      
+      return responses.default;
+    }
+
+    function sendMessage() {
+      const message = chatInput.value.trim();
+      if (message === '') return;
+
+      addMessage(message, true);
+      chatInput.value = '';
+
+      setTimeout(() => {
+        const botResponse = getBotResponse(message);
+        addMessage(botResponse, false);
+      }, 500);
+    }
+
+    chatSend.addEventListener('click', sendMessage);
+    
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    // SMOOTH SCROLLING
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
